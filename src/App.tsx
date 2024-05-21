@@ -79,9 +79,9 @@ function App() {
           <img onClick={() => setSearchedWord(searchedWord)} className='absolute top-4 cursor-pointer right-8 z-10 w-8' src={search} alt='search icon' />
         </span>
       </div>
-      <div className="word-div  rounded-xl mt-7  px-4 w-full py-10 h-screen mb-8shadow-md bg-white  ">
+      <div className="word-div  rounded-3xl mt-7  px-4 w-full py-10 h-screen mb-8shadow-md bg-white  ">
         <h1 className='text-center text-2xl'>{searchedWord}</h1>
-        <img onClick={handlePlayAudio} className='rounded-full mx-auto mt-3' src={speaker} alt='speaker' />
+        <img onClick={handlePlayAudio} className='rounded-full mx-auto mt-3 cursor-pointer' src={speaker} alt='speaker' />
         <audio ref={audioRef} />
         {/* {displayedWords && displayedWords.map((word, index) => (
           <div key={index}>
@@ -103,15 +103,14 @@ function App() {
         ))} */}
         {wordData &&
           <div>
-            <li>{wordData.sourceUrls}</li>
-            <li>{wordData.phonetic}</li>
+            <li className='text-gray-500'>{wordData.phonetic}</li>
+            <li>Source: {wordData.sourceUrls}</li>
             {wordData.meanings && wordData.meanings.map((meaning) => (
               <div>
-                <li>{meaning.partOfSpeech}</li>
                 {meaning.definitions.map((definition) => (
                   <div>
                     <p>{definition.definition}</p>
-                    {definition.synonyms && <li>Synonyms for {searchedWord}: {definition.synonyms}</li>}
+                    {definition.synonyms ? <li className='#0F322E'>Synonyms for {searchedWord}: {definition.synonyms}</li> : ""}
                   </div>
                 ))}
               </div>
