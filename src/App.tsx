@@ -10,6 +10,7 @@ import { useSpeechSynthesis } from 'react-speech-kit';
 function App() {
   const { speak } = useSpeechSynthesis();
   interface words {
+    word: string,
     phonetic: string,
     phonetics: { audio?: string }[];
     meanings: {
@@ -73,8 +74,8 @@ function App() {
   // };
 
   const handlePlayAudio = () => {
-    if (wordData && wordData.phonetic) {
-      speak({ text: wordData.phonetic });
+    if (wordData && wordData.word) {
+      speak({ text: wordData.word });
     }
   };
 
@@ -89,7 +90,7 @@ function App() {
       </div>
       <div className="word-div  rounded-3xl mt-7  px-4 w-full py-10 h-screen mb-8shadow-md bg-white  ">
         <h1 className='text-center text-2xl'>{searchedWord}</h1>
-        {wordData?.phonetic && (
+        {wordData?.word && (
 
           <img onClick={handlePlayAudio} className='rounded-full mx-auto mt-3 cursor-pointer' src={speaker} alt='speaker' />
         )}
