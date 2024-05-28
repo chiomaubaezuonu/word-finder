@@ -4,9 +4,11 @@ import './index.css';
 import search from "./search.svg"
 import speaker from "./speaker.png"
 import axios from "axios"
-import { link } from 'fs';
+// import { link } from 'fs';
+import { useSpeechSynthesis } from 'react-speech-kit';
 
 function App() {
+  const { speak } = useSpeechSynthesis();
   interface words {
     phonetic: string,
     phonetics: { audio?: string }[];
@@ -63,26 +65,35 @@ function App() {
     setSearchedWord(e.target.value)
   }
 
+  // const handlePlayAudio = () => {
+  //   if (audioRef.current && wordData?.phonetics[0]?.audio) { // Check if audio exists
+  //     audioRef.current.src = wordData.phonetics[0].audio;
+  //     audioRef.current.play();
+  //   }
+  // };
+
   const handlePlayAudio = () => {
-    if (audioRef.current && wordData?.phonetics[0]?.audio) { // Check if audio exists
-      audioRef.current.src = wordData.phonetics[0].audio;
-      audioRef.current.play();
+    if (wordData && wordData.phonetic) {
+      speak({ text: wordData.phonetic });
     }
   };
 
   return (
-    <div className="App w-11/12  rounded-lg  mx-auto pt-16 shadow-lg my-12 bg-[#f6d3b6] text-[#0F322E]">
-      <div className="input-div w-10/12 mx-auto">
+    <div className="App w-full  rounded-lg  mx-auto pt-16 shadow-lg bg-[#f6d3b6] text-[#0F322E]">
+      <div className="input-div w-full mx-auto">
         <h2 className='text-3xl mb-4 font-bold text-center'>Search for a word</h2>
-        <span className='flex justify-between relative'>
+        <span className='flex justify-between items-center relative mx-1'>
           <input value={searchedWord} onChange={handleInputValue} className='relative w-full outline-none rounded-md py-4 px-2' type="text" placeholder='Search for a word...' />
-          <img onClick={() => setSearchedWord(searchedWord)} className='absolute top-4 cursor-pointer right-8 z-10 w-8' src={search} alt='search icon' />
+          <img onClick={() => setSearchedWord(searchedWord)} className='absolute top-4 cursor-pointer right-0 px-2 z-10 w-11' src={search} alt='search icon' />
         </span>
       </div>
       <div className="word-div  rounded-3xl mt-7  px-4 w-full py-10 h-screen mb-8shadow-md bg-white  ">
         <h1 className='text-center text-2xl'>{searchedWord}</h1>
-        <img onClick={handlePlayAudio} className='rounded-full mx-auto mt-3 cursor-pointer' src={speaker} alt='speaker' />
-        <audio ref={audioRef} />
+        {wordData?.phonetic && (
+
+          <img onClick={handlePlayAudio} className='rounded-full mx-auto mt-3 cursor-pointer' src={speaker} alt='speaker' />
+        )}
+        {/* <audio ref={audioRef} /> */}
         {/* {displayedWords && displayedWords.map((word, index) => (
           <div key={index}>
             <p>{word.phonetic}</p>
