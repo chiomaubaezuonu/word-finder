@@ -17,6 +17,7 @@ function App() {
       partOfSpeech: string[],
       definitions: {
         definition: string,
+        example: string,
         synonyms?: []
       }[],
 
@@ -115,13 +116,14 @@ function App() {
         ))} */}
         {wordData &&
           <div>
-            <li className='text-gray-500'>{wordData.phonetic}</li>
+            <li className='italic text-gray-400'>{wordData.phonetic}</li>
             <li>Source: {wordData.sourceUrls}</li>
             {wordData.meanings && wordData.meanings.map((meaning) => (
               <div>
                 {meaning.definitions.map((definition) => (
                   <div>
                     <p>{definition.definition}</p>
+                    {definition.example && <p className='italic text-gray-400'>{definition.example}</p>}
                     {definition.synonyms ? <li className='#0F322E'>Synonyms for {searchedWord}: {definition.synonyms}</li> : ""}
                   </div>
                 ))}
