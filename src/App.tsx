@@ -91,11 +91,11 @@ function App() {
           <img onClick={() => setSearchedWord(searchedWord)} className='absolute top-4 cursor-pointer right-0 px-2 z-10 w-11' src={search} alt='search icon' />
         </span>
       </div>
-      <div className="word-div  rounded-3xl mt-7  px-5 leading-7 w-full py-10 h-screen mb-8shadow-md bg-white  ">
-        <div>
-          <img src={leftArrow} alt='left double arrow' />
+      <div className="word-div  rounded-3xl mt-7  px-5 leading-9 w-full py-10 h-screen mb-8shadow-md bg-white  ">
+        <div className='flex gap-1 justify-center items-center'>
+          <img className='w-6 h-6 object-cover' src={rightArrow} alt='right double arrow' />
           <h1 className='text-center text-2xl'>{searchedWord}</h1>
-          <img src={rightArrow} alt='right double arrow' />
+          <img className='w-6 h-6 object-cover'  src={leftArrow} alt='left double arrow' />
         </div>
         {wordData?.word && (
 
@@ -103,14 +103,14 @@ function App() {
         )}
         {wordData &&
           <div>
-            <li className='italic font-light font-lato'>{wordData.phonetic}</li>
+            <li className='italic text-gray-400'>{wordData.phonetic}</li>
             <p>{wordData.meanings[0].partOfSpeech}</p>
 
             {wordData.meanings && wordData.meanings.map((meaning) => (
               <div>
                 {wordData.meanings[0].definitions.map(i => (
                   <div >
-                    <p>{i.definition}</p>
+                    <p className='text-lg'>{i.definition}</p>
                     <p className='italic text-gray-400'>{i.example}</p>
                   </div>
                 ))}
@@ -124,7 +124,7 @@ function App() {
                 ))} */}
               </div>
             ))}
-            <div className='bg-[#f6d3b6] p-4 rounded-lg'>
+            <div className='bg-[#f6d3b6] p-4 rounded-lg mt-7'>
               <p className='text-center'>Source: {wordData.sourceUrls}</p>
 
             </div>
