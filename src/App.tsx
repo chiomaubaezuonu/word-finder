@@ -31,7 +31,7 @@ function App() {
   const [searchedWord, setSearchedWord] = useState<string>("")
   // const [displayedWords, setDisplayedWords] = useState<words[] | null>([])
   const [wordData, setWordData] = useState<words | null>(null)
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  
 
 
 
