@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import './index.css';
 import search from "./search.svg"
 import speaker from "./speaker.png"
 import axios from "axios"
-// import { link } from 'fs';
+
 import { useSpeechSynthesis } from 'react-speech-kit';
 
 
