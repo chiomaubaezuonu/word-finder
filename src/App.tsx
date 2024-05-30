@@ -6,8 +6,7 @@ import speaker from "./speaker.png"
 import axios from "axios"
 // import { link } from 'fs';
 import { useSpeechSynthesis } from 'react-speech-kit';
-import leftArrow from "./leftArrow.png"
-import rightArrow from "./rightArrow.png"
+
 
 function App() {
   const { speak } = useSpeechSynthesis();
@@ -87,15 +86,15 @@ function App() {
       <div className="input-div w-full mx-auto">
         <h2 className='text-3xl mb-4 font-bold text-center'>Search for a word</h2>
         <span className='flex justify-between items-center relative mx-1'>
-          <input value={searchedWord} onChange={handleInputValue} className='relative w-full outline-none rounded-lg py-4 px-2' type="text" placeholder='Search for a word...' />
+          <input value={searchedWord} onChange={handleInputValue} className='relative w-full outline-none rounded-lg py-4 px-4' type="text" placeholder='Search for a word...' />
           <img onClick={() => setSearchedWord(searchedWord)} className='absolute top-4 cursor-pointer right-0 px-2 z-10 w-11' src={search} alt='search icon' />
         </span>
       </div>
       <div className="word-div  rounded-3xl mt-7  px-5 leading-9 w-full py-10 h-screen mb-8shadow-md bg-white  ">
         <div className='flex gap-1 justify-center items-center'>
-          <img className='w-6 h-6 object-cover' src={rightArrow} alt='right double arrow' />
+         
           <h1 className='text-center text-2xl'>{searchedWord}</h1>
-          <img className='w-6 h-6 object-cover'  src={leftArrow} alt='left double arrow' />
+        
         </div>
         {wordData?.word && (
 
