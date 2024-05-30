@@ -83,7 +83,7 @@ function App() {
   };
 
   return (
-    <div className="App w-full  rounded-lg  mx-auto pt-16 shadow-lg bg-[#f6d3b6] text-[#0F322E]">
+    <div className="App w-full h-screen mb-3  rounded-lg  mx-auto pt-16 shadow-lg bg-[#f6d3b6] text-[#0F322E]">
       <div className="input-div w-full mx-auto">
         <h2 className='text-3xl mb-4 font-bold text-center'>Search for a word</h2>
         <span className='flex justify-between items-center relative mx-1'>
@@ -124,7 +124,7 @@ function App() {
                 ))} */}
               </div>
             ))}
-            <div className='bg-[#f6d3b6] p-4 rounded-lg mt-7'>
+            <div className='bg-[#f6d3b6] p-3 rounded-lg mt-7'>
               <p className='text-center'>Source: {wordData.sourceUrls}</p>
 
             </div>
