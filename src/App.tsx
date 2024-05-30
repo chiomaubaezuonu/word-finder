@@ -6,6 +6,8 @@ import speaker from "./speaker.png"
 import axios from "axios"
 // import { link } from 'fs';
 import { useSpeechSynthesis } from 'react-speech-kit';
+import leftArrow from "./leftArrow.png"
+import rightArrow from "./rightArrow.png"
 
 function App() {
   const { speak } = useSpeechSynthesis();
@@ -85,50 +87,47 @@ function App() {
       <div className="input-div w-full mx-auto">
         <h2 className='text-3xl mb-4 font-bold text-center'>Search for a word</h2>
         <span className='flex justify-between items-center relative mx-1'>
-          <input value={searchedWord} onChange={handleInputValue} className='relative w-full outline-none rounded-md py-4 px-2' type="text" placeholder='Search for a word...' />
+          <input value={searchedWord} onChange={handleInputValue} className='relative w-full outline-none rounded-lg py-4 px-2' type="text" placeholder='Search for a word...' />
           <img onClick={() => setSearchedWord(searchedWord)} className='absolute top-4 cursor-pointer right-0 px-2 z-10 w-11' src={search} alt='search icon' />
         </span>
       </div>
-      <div className="word-div  rounded-3xl mt-7  px-4 w-full py-10 h-screen mb-8shadow-md bg-white  ">
-        <h1 className='text-center text-2xl'>{searchedWord}</h1>
+      <div className="word-div  rounded-3xl mt-7  px-5 leading-7 w-full py-10 h-screen mb-8shadow-md bg-white  ">
+        <div>
+          <img src={leftArrow} alt='left double arrow' />
+          <h1 className='text-center text-2xl'>{searchedWord}</h1>
+          <img src={rightArrow} alt='right double arrow' />
+        </div>
         {wordData?.word && (
 
           <img onClick={handlePlayAudio} className='rounded-full mx-auto mt-3 cursor-pointer' src={speaker} alt='speaker' />
         )}
-        {/* <audio ref={audioRef} /> */}
-        {/* {displayedWords && displayedWords.map((word, index) => (
-          <div key={index}>
-            <p>{word.phonetic}</p>
-            <p>{word.sourceUrls}</p>
-            {word.meanings && word.meanings.map(item => (
+        {wordData &&
+          <div>
+            <li className='italic font-light font-lato'>{wordData.phonetic}</li>
+            <p>{wordData.meanings[0].partOfSpeech}</p>
+
+            {wordData.meanings && wordData.meanings.map((meaning) => (
               <div>
-                <li>{item.partOfSpeech}</li>
-                {item.definitions.map((definition) => (
-                  <div>
-                    <li className='bg-green-900 text-white'>{definition.definition}</li>
-                    <li className='bg-yellow-400'>Synonyms for {searchedWord}: {definition.synonyms}</li>
+                {wordData.meanings[0].definitions.map(i => (
+                  <div >
+                    <p>{i.definition}</p>
+                    <p className='italic text-gray-400'>{i.example}</p>
                   </div>
                 ))}
 
-              </div>
-            ))}
-          </div>
-        ))} */}
-        {wordData &&
-          <div>
-            <li className='italic text-gray-400'>{wordData.phonetic}</li>
-            <li>Source: {wordData.sourceUrls}</li>
-            {wordData.meanings && wordData.meanings.map((meaning) => (
-              <div>
-                {meaning.definitions.map((definition) => (
+                {/* {meaning.definitions.map((definition) => (
                   <div>
                     <p>{definition.definition}</p>
                     {definition.example && <p className='italic text-gray-400'>{definition.example}</p>}
                     {definition.synonyms ? <li className='#0F322E'>Synonyms for {searchedWord}: {definition.synonyms}</li> : ""}
                   </div>
-                ))}
+                ))} */}
               </div>
             ))}
+            <div className='bg-[#f6d3b6] p-4 rounded-lg'>
+              <p className='text-center'>Source: {wordData.sourceUrls}</p>
+
+            </div>
           </div>
         }
       </div>
