@@ -86,8 +86,8 @@ function App() {
       <div className="input-div w-full mx-auto">
         <h2 className='text-3xl mb-4 font-bold text-center'>Search for a word</h2>
         <span className='flex justify-between items-center relative mx-1'>
-          <input value={searchedWord} onChange={handleInputValue} className='relative w-full outline-none rounded-lg py-4 px-3 mx-3' type="text" placeholder='Search for a word...' />
-          <img onClick={() => setSearchedWord(searchedWord)} className='absolute top-4 cursor-pointer right-0 pr-4 z-10 w-11' src={search} alt='search icon' />
+          <input value={searchedWord} onChange={handleInputValue} className='relative w-full outline-none text-xl rounded-lg py-4 px-5 mx-3' type="text" placeholder='Search for a word...' />
+          <img onClick={() => setSearchedWord(searchedWord)} className='absolute top-4 cursor-pointer right-0 pr-4 mr-2 z-10 w-11' src={search} alt='search icon' />
         </span>
         <h1 className='text-center text-4xl mt-3'>{searchedWord}</h1>
       </div>
