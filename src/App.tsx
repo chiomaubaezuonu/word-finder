@@ -30,7 +30,7 @@ function App() {
   const [searchedWord, setSearchedWord] = useState<string>("")
   // const [displayedWords, setDisplayedWords] = useState<words[] | null>([])
   const [wordData, setWordData] = useState<words | null>(null)
-  
+
 
 
 
@@ -91,7 +91,7 @@ function App() {
         </span>
         <h1 className='text-center text-4xl mt-3'>{searchedWord}</h1>
       </div>
-      <div className="word-div  rounded-3xl mt-6  px-5 leading-9 w-full py-10 h-screen mb-8shadow-md bg-white  ">
+      <div className="word-div  rounded-3xl md:rounded-[2.5rem] mt-6  px-5 leading-9 w-full py-10 h-screen mb-8shadow-md bg-white  ">
         {wordData?.word && (
 
           <img onClick={handlePlayAudio} className='rounded-full mx-auto mt-3 cursor-pointer' src={speaker} alt='speaker' />
